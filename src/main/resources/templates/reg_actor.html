@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registrar Actor</title>
+    </head>
+    <body>
+        <form action="#" method="post" th:action="@{/actor/reg}" th:object="${actor}">
+            <ol>
+                <li>
+                    <span>NOMBRE</span>
+                    <input type="text" th:field="*{nombre}">
+                </li>
+                <li>
+                    <span>COMPLEXION CORPORAL</span>
+                    <select th:field="*{complexionCorporal}">
+                        <option value="delgado">Delgado</option>
+                        <option value="promedio">Promedio</option>
+                        <option value="grueso">Grueso</option>
+                    </select>
+                </li>
+                <li>
+                    <span>GENERO</span>
+                    <select th:field="*{genero}">
+                        <option value="hombre">Hombre</option>
+                        <option value="mujer">Mujer</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </li>
+                <li>
+                    <span>ESTATURA</span>
+                    <input type="number" th:field="*{estatura}">
+                </li>
+                <li>
+                    <span>COLOR PELO</span>
+                    <input type="text" th:field="*{colorPelo}">
+                </li>
+                <li>
+                    <span>COLOR OJOS</span>
+                    <input type="text" th:field="*{colorOjos}">
+                </li>
+                <li>
+                    <span>FECHA NACIMIENTO</span>
+                    <input type="date" th:field="*{fechaNacimiento}">
+                </li>
+            </ol>
+            <p>
+            <input type="submit" value="Submit"/>
+            <input type="reset" value="Reset"/>
+            </p>
+        </form>
+    </body>
+</html>

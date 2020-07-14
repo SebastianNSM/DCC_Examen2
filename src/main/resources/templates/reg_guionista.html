@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registrar Guionista</title>
+    </head>
+    <body>
+        <form action="#" method="post" th:action="@{/guionista/reg}" th:object="${guionista}">
+            <ol>
+                <li>
+                    <span>NOMBRE</span>
+                    <input type="text" th:field="*{nombre}">
+                </li>
+                <li>
+                    <span>DIRECCION</span>
+                    <input type="text" th:field="*{direccion}">
+                </li>
+                <li>
+                    <span>EMAIL</span>
+                    <input type="email" th:field="*{email}">
+                </li>
+                <li>
+                    <span>FECHA NACIMIENTO</span>
+                    <input type="date" th:field="*{fechaNacimiento}">
+                </li>
+            </ol>
+            <p>
+            <input type="submit" value="Submit"/>
+            <input type="reset" value="Reset"/>
+            </p>
+        </form>
+    </body>
+</html>

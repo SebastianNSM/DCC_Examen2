@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registrar Guion</title>
+    </head>
+    <body>
+        <form action="#" method="post" th:action="@{/guion/reg}" th:object="${guion}">
+            <ol>
+                <li>
+                    <span>NOMBRE</span>
+                    <input type="text" th:field="${guion.nombre}">
+                </li>
+                <li>
+                    <span>GENERO</span>
+                    <select th:field="${guion.genero}">
+                        <option value="tragedia">tragedia</option>
+                        <option value="comedia">comedia</option>
+                        <option value="culebron">culebron</option>
+                        <option value="fantasia">fantasia</option>
+                    </select>
+                </li>
+                <li>
+                    <span>IDEA CENTRAL</span>
+                    <input type="text" th:field="${guion.ideaCentral}">
+                </li>
+                <li>
+                    <span>Guionista</span>
+                    <select th:field="${guion.idGuionista}" >
+                        <option value="">Seleccione una opcion</option>
+                        <option th:each="entry : ${guionistas}" th:value="${entry.id}" th:text="${entry.nombre}"></option>
+                    </select>
+                </li>
+            </ol>
+            <p>
+            <input type="submit" value="Submit"/>
+            <input type="reset" value="Reset"/>
+            </p>
+        </form>
+    </body>
+</html>

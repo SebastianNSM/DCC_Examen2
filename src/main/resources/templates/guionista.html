@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8"></meta>
+        <meta http-equiv="Content-Type" content="text/html"></meta>
+        <title>Guionistas</title>
+    </head>
+    <body>
+        <div>
+            <h1>Guionistas</h1>
+            <h2>
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                </ul>
+            </h2>
+            <br>
+            <ul>
+                <div th:each="entry,status : ${guionistas}">
+                    <li>
+                        <h4>
+                            <span th:text="${entry.id}">ID</span>
+                            <span th:text="${entry.nombre}">NOMBRE</span>
+                        </h4>
+                        <p>
+                        <small>
+                            <span th:text="${entry.direccion}">DIRECCION</span>
+                        </small>
+                        </p>
+                        <p>
+                        <span th:text="${entry.email}">EMAIL</span>
+                        </p>
+                        <p>
+                        <span th:text="${entry.fechaNacimiento}">FECHA_NACIMIENTO</span>
+                        </p>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </body>
+</html>
+

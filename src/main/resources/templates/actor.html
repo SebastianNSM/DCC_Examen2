@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8"></meta>
+        <meta http-equiv="Content-Type" content="text/html"></meta>
+        <title>Actores</title>
+    </head>
+    <body>
+        <div>
+            <h1>Actores</h1>
+            <h2>
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li>
+                        Filtrar por nombre:
+                        <form th:action="@{/actor/get-by-nombre}">
+                            <input type="text" th:name="nombre">
+                            <input type="submit" value="Filtrar">
+                        </form>
+                    </li>
+                </ul>
+            </h2>
+            <br>
+            <ul>
+                <div th:each="entry,status : ${actores}">
+                    <li>
+                        <p>
+                        <span>
+                            Nombre:
+                            <span th:text="${entry.nombre}">NOMBRE</span>
+                        </span>
+                        <small>
+                            #
+                            <span th:text="${entry.id}">ID</span>
+                        </small>
+                        </p>
+                        <p>
+                        <span>
+                            Genero:
+                            <span th:text="${entry.genero}">GENERO</span>
+                        </span>
+                        </p>
+                        <p>
+                        <span>
+                            Estatura:
+                            <span th:text="${entry.estatura}">ESTATURA</span>
+                        </span>
+                        </p>
+                        <p>
+                        <span>
+                            Color "Ojos:
+                            <span th:text="${entry.colorOjos}">COLOR OJOS</span>
+                        </span>
+                        </p>
+                        <p>
+                        <span>
+                            Color Pelo:
+                            <span th:text="${entry.colorPelo}">COLOR PELO</span>
+                        </span>
+                        </p>
+                        <p>
+                        <span>
+                            Complexion Corporal:
+                            <span th:text="${entry.complexionCorporal}">COMPLEXION CORPORAL</span>
+                        </span>
+                        </p>
+                        <p>
+                        <span>
+                            Fecha_nacimiento:
+                            <span th:text="${entry.createdAsShort}">FECHA_NACIMIENTO</span>
+                        </span>
+                        </p>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </body>
+</html>
+

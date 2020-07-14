@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8"></meta>
+        <meta http-equiv="Content-Type" content="text/html"></meta>
+        <title>Guiones</title>
+    </head>
+    <body>
+        <div>
+            <h1>Guiones</h1>
+            <h2>
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li>
+                        Filtrar por genero:
+                        <form th:action="@{/guion/get-by-genero}">
+                            <input type="text" th:name="genero">
+                            <input type="submit" value="Filtrar">
+                        </form>
+                    </li><li>
+                        Filtrar por nombre:
+                        <form th:action="@{/guion/get-by-nombre}">
+                            <input type="text" th:name="nombre">
+                            <input type="submit" value="Filtrar">
+                        </form>
+                    </li>
+                </ul>
+            </h2>
+            <br>
+            <ul>
+                <div th:each="entry,status : ${guiones}">
+                    <li>
+                        <p>
+                        <span>Nombre: </span><span th:text="${entry.nombre}">NOMBRE</span>
+                        <small>#</span><span th:text="${entry.id}">ID</small>
+                        </p>
+                        <p>
+                        <span>Genero: </span><span th:text="${entry.genero}">GENERO</span>
+                        </p>
+                        <p>
+                        <span>Idea Central: </span><span th:text="${entry.ideaCentral}">IDEA_CENTRAL</span>
+                        </p>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </body>
+</html>
+
