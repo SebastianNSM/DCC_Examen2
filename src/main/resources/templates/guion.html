@@ -13,13 +13,13 @@
                     <li><a href="/home">Home</a></li>
                     <li>
                         Filtrar por genero:
-                        <form th:action="@{/guion/get-by-genero}">
+                        <form th:action="@{/guion/find-by-genero}">
                             <input type="text" th:name="genero">
                             <input type="submit" value="Filtrar">
                         </form>
                     </li><li>
                         Filtrar por nombre:
-                        <form th:action="@{/guion/get-by-nombre}">
+                        <form th:action="@{/guion/find-by-nombre}">
                             <input type="text" th:name="nombre">
                             <input type="submit" value="Filtrar">
                         </form>

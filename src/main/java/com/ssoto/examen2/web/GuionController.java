@@ -29,7 +29,7 @@ public class GuionController {
 
     @GetMapping("guion")
     public String index(Model model) throws ParseException {
-        model.addAttribute("guiones", guionService.getAll());
+        model.addAttribute("guiones", guionService.findAll());
         return "guion";
     }
 
@@ -39,21 +39,21 @@ public class GuionController {
         return "redirect:/home";
     }
 
-    @GetMapping("guion/get-by-genero")
+    @GetMapping("guion/find-by-genero")
     public String getByGenero(@RequestParam(value = "genero") String genero, Model model) {
-        model.addAttribute("guiones", guionService.getByGenero(genero));
+        model.addAttribute("guiones", guionService.findByGenero(genero));
         return "guion";
     }
 
-    @GetMapping("guion/get-by-nombre")
+    @GetMapping("guion/find-by-nombre")
     public String getByNombre(@RequestParam(value = "nombre") String nombre, Model model) {
-        model.addAttribute("guiones", guionService.getByNombre(nombre));
+        model.addAttribute("guiones", guionService.findByNombre(nombre));
         return "guion";
     }
 
     @GetMapping("guion/reg")
     public String getForm(Model model) {
-        model.addAttribute("guionistas", guionistaService.getAll());
+        model.addAttribute("guionistas", guionistaService.findAll());
         model.addAttribute("guion", new Guion());
         return "reg_guion";
     }

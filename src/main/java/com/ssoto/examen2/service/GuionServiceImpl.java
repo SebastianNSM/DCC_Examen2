@@ -8,9 +8,6 @@ import com.ssoto.examen2.repository.GuionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- * GuionServiceImpl
- */
 @Service
 public class GuionServiceImpl implements GuionService {
 
@@ -24,22 +21,27 @@ public class GuionServiceImpl implements GuionService {
     }
 
     @Override
-    public List<Guion> getAll() {
+    public List<Guion> findAll() {
         return guionRepository.findAll();
     }
 
     @Override
-    public Guion getById(Long id) {
+    public Guion findById(Long id) {
         return guionRepository.findById(id).orElse(null);
     }
 
     @Override
-    public List<Guion> getByNombre(String nombre) {
+    public List<Guion> findByNombre(String nombre) {
         return guionRepository.findByNombreContainingIgnoreCase(nombre);
     }
 
     @Override
-    public List<Guion> getByGenero(String genero) {
+    public List<Guion> findByGenero(String genero) {
         return guionRepository.findByGeneroContainingIgnoreCase(genero);
+    }
+
+    @Override
+    public List<Guion> findProduccion() {
+        return guionRepository.findByProduccionTrue();
     }
 }

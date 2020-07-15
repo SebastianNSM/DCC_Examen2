@@ -11,9 +11,11 @@ public interface ActorService {
 
     public void save(Actor newActor);
 
-    public List<Actor> getAll();
+    public List<Actor> findAll();
 
-    public Actor getById(Long id);
+    public Actor findById(Long id);
 
-    public List<Actor> getByNombre(String nombre);
+    public List<Actor> findByNombre(String nombre);
+
+    public List<Actor> findByEdadMenorIgual(int edad);
 }

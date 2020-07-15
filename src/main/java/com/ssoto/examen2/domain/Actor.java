@@ -2,6 +2,9 @@ package com.ssoto.examen2.domain;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -14,9 +17,6 @@ import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-/**
- * Actor
- */
 @Entity
 @Table(name = "t_actor")
 public class Actor {
@@ -49,15 +49,15 @@ public class Actor {
     @Transient
     private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
+    @Column(name = "edad")
+    private int edad;
+
     public String getCreatedAsShort() {
         return format.format(fechaNacimiento);
     }
 
-    public Actor() {
-    }
-
     public Actor(String nombre, String genero, int estatura, String colorOjos, String colorPelo,
-                 String complexionCorporal, String fechaNacimiento) throws ParseException {
+            String complexionCorporal, String fechaNacimiento) throws ParseException {
         this.nombre = nombre;
         this.genero = genero;
         this.estatura = estatura;
@@ -65,6 +65,11 @@ public class Actor {
         this.colorPelo = colorPelo;
         this.complexionCorporal = complexionCorporal;
         this.fechaNacimiento = format.parse(fechaNacimiento);
+        LocalDate d = this.fechaNacimiento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        this.edad = Period.between(d, LocalDate.now()).getYears();
+    }
+
+    public Actor() {
     }
 
     public Long getId() {
@@ -115,6 +120,14 @@ public class Actor {
         this.colorPelo = colorPelo;
     }
 
+    public String getComplexionCorporal() {
+        return complexionCorporal;
+    }
+
+    public void setComplexionCorporal(String complexionCorporal) {
+        this.complexionCorporal = complexionCorporal;
+    }
+
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
@@ -131,12 +144,18 @@ public class Actor {
         this.format = format;
     }
 
-    public String getComplexionCorporal() {
-        return complexionCorporal;
+    public int getEdad() {
+        return edad;
     }
 
-    public void setComplexionCorporal(String complexionCorporal) {
-        this.complexionCorporal = complexionCorporal;
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
+    @Override
+    public String toString() {
+        return "Actor [colorOjos=" + colorOjos + ", colorPelo=" + colorPelo + ", complexionCorporal="
+                + complexionCorporal + ", estatura=" + estatura + ", fechaNacimiento=" + this.getCreatedAsShort()
+                + ", edad=" + this.getEdad() + ", genero=" + genero + ", id=" + id + ", nombre=" + nombre + "]";
+    }
 }

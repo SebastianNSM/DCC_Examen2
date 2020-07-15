@@ -1,6 +1,7 @@
 package com.ssoto.examen2.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.ssoto.examen2.domain.Actor;
 import com.ssoto.examen2.repository.ActorRepository;
@@ -24,18 +25,25 @@ public class ActorServiceImpl implements ActorService {
     }
 
     @Override
-    public List<Actor> getAll() {
+    public List<Actor> findAll() {
         return actorRepository.findAll();
     }
 
     @Override
-    public Actor getById(Long id) {
+    public Actor findById(Long id) {
         return actorRepository.findById(id).orElse(null);
     }
 
     @Override
-    public List<Actor> getByNombre(String nombre) {
+    public List<Actor> findByNombre(String nombre) {
         return actorRepository.findByNombreContainingIgnoreCase(nombre);
+    }
+
+    @Override
+    public List<Actor> findByEdadMenorIgual(int edad) {
+        // List<Actor> lst = actorRepository.findAll();
+        List<Actor> lst = actorRepository.findByEdadLessThanEqual(edad);
+        return lst.stream().filter(a -> a.getEdad() <= edad).collect(Collectors.toList());
     }
 
 }

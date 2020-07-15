@@ -11,4 +11,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface ActorRepository extends JpaRepository<Actor, Long> {
     List<Actor> findByNombreContainingIgnoreCase(String nombre);
+
+    List<Actor> findByEdadLessThanEqual(int maxAge);
 }

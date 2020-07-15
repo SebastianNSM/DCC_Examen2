@@ -4,14 +4,11 @@ import java.util.List;
 
 import com.ssoto.examen2.domain.Guionista;
 
-/**
- * GuionistaService
- */
 public interface GuionistaService {
 
     public void save(Guionista newGuionista);
 
-    public List<Guionista> getAll();
+    public List<Guionista> findAll();
 
-    public Guionista getById(Long id);
+    public Guionista findById(Long id);
 }

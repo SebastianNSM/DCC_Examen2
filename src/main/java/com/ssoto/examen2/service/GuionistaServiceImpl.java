@@ -24,12 +24,12 @@ public class GuionistaServiceImpl implements GuionistaService {
     }
 
     @Override
-    public List<Guionista> getAll() {
+    public List<Guionista> findAll() {
         return guionRepository.findAll();
     }
 
     @Override
-    public Guionista getById(Long id) {
+    public Guionista findById(Long id) {
         return guionRepository.findById(id).orElse(null);
     }
 

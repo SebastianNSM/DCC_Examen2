@@ -4,18 +4,19 @@ import java.util.List;
 
 import com.ssoto.examen2.domain.Guion;
 
-/**
- * GuionService
- */
 public interface GuionService {
 
     public void save(Guion newGuion);
 
-    public List<Guion> getAll();
+    public List<Guion> findAll();
 
-    public Guion getById(Long id);
+    public Guion findById(Long id);
 
-    public List<Guion> getByNombre(String nombre);
+    public List<Guion> findByNombre(String nombre);
 
-    public List<Guion> getByGenero(String genero);
+    public List<Guion> findByGenero(String genero);
+
+    public List<Guion> findProduccion();
+
+
 }

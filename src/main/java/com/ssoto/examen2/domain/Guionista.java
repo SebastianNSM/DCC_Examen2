@@ -2,25 +2,18 @@ package com.ssoto.examen2.domain;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-/**
- * Guionista
- */
 @Entity
 @Table(name = "t_guionista")
 public class Guionista {
@@ -44,15 +37,8 @@ public class Guionista {
     @Transient
     private SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 
-    @OneToMany
-    @JoinColumn(name = "id_guionista")
-    private List<Guion> guiones = new ArrayList<>();
-
     public String getCreatedAsShort() {
         return format.format(fechaNacimiento);
-    }
-
-    public Guionista() {
     }
 
     public Guionista(String nombre, String direccion, String email, String fechaNacimiento) throws ParseException {
@@ -60,6 +46,9 @@ public class Guionista {
         this.direccion = direccion;
         this.email = email;
         this.fechaNacimiento = format.parse(fechaNacimiento);
+    }
+
+    public Guionista() {
     }
 
     public Long getId() {
@@ -109,4 +98,5 @@ public class Guionista {
     public void setFormat(SimpleDateFormat format) {
         this.format = format;
     }
+
 }

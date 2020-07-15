@@ -1,17 +1,19 @@
 package com.ssoto.examen2.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-/**
- * Guion
- */
 @Entity
 @Table(name = "t_guion")
 public class Guion {
@@ -28,14 +30,26 @@ public class Guion {
     @Column(name = "idea_central")
     private String ideaCentral;
 
-    public Guion() {
-    }
+    @ManyToMany(fetch = FetchType.EAGER)
+    public List<Actor> actores;
 
-    public Guion(String nombre, String genero, String ideaCentral, Long idGuionista) {
+    @ManyToOne
+    @JoinColumn(name = "id_guionista")
+    public Guionista guionista;
+
+    @Column(name = "produccion")
+    public boolean produccion;
+
+    public Guion(String nombre, String genero, String ideaCentral, Guionista guionista) {
         this.nombre = nombre;
         this.genero = genero;
         this.ideaCentral = ideaCentral;
-        this.idGuionista = idGuionista;
+        this.guionista = guionista;
+        this.produccion = false;
+        this.actores = new ArrayList<Actor>();
+    }
+
+    public Guion() {
     }
 
     public Long getId() {
@@ -70,12 +84,38 @@ public class Guion {
         this.ideaCentral = ideaCentral;
     }
 
-    public Long getIdGuionista() {
-        return idGuionista;
+    public Guionista getGuionista() {
+        return guionista;
     }
 
-    public void setIdGuionista(Long idGuionista) {
-        this.idGuionista = idGuionista;
+    public void setGuionista(Guionista guionista) {
+        this.guionista = guionista;
+    }
+
+    public List<Actor> getActores() {
+        return actores;
+    }
+
+    public void setActores(List<Actor> actores) {
+        this.actores = actores;
+    }
+
+    public boolean isProduccion() {
+        return produccion;
+    }
+
+    public void setProduccion(boolean produccion) {
+        this.produccion = produccion;
+    }
+
+    public void toggleProduccion() {
+        this.produccion = !this.produccion;
+    }
+
+    @Override
+    public String toString() {
+        return "Guion [actores=" + actores + ", genero=" + genero + ", guionista=" + guionista.getNombre() + ", id="
+                + id + ", ideaCentral=" + ideaCentral + ", nombre=" + nombre + ", produccion=" + produccion + "]";
     }
 
 }

@@ -24,7 +24,7 @@ public class ActorController {
 
     @GetMapping("actor")
     public String index(Model model) throws ParseException {
-        model.addAttribute("actores", actorService.getAll());
+        model.addAttribute("actores", actorService.findAll());
         return "actor";
     }
 
@@ -40,9 +40,9 @@ public class ActorController {
         return "reg_actor";
     }
 
-    @GetMapping("actor/get-by-nombre")
+    @GetMapping("actor/find-by-nombre")
     public String getByNombre(@RequestParam(value = "nombre") String nombre, Model model) {
-        model.addAttribute("actores", actorService.getByNombre(nombre));
+        model.addAttribute("actores", actorService.findByNombre(nombre));
         return "actor";
     }
 

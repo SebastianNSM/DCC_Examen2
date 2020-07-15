@@ -13,4 +13,6 @@ public interface GuionRepository extends JpaRepository<Guion, Long> {
     List<Guion> findByNombreContainingIgnoreCase(String nombre);
 
     List<Guion> findByGeneroContainingIgnoreCase(String genero);
+
+    List<Guion> findByProduccionTrue();
 }

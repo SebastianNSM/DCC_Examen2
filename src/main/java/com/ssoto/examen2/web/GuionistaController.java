@@ -23,7 +23,7 @@ public class GuionistaController {
 
     @GetMapping("guionista")
     public String index(Model model) throws ParseException {
-        model.addAttribute("guionistas", guionistaService.getAll());
+        model.addAttribute("guionistas", guionistaService.findAll());
         return "guionista";
     }
 
