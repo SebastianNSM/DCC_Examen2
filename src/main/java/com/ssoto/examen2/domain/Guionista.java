@@ -37,6 +37,10 @@ public class Guionista {
     @Transient
     private SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 
+    public Guionista(Long id) {
+        this.id = id;
+    }
+
     public String getCreatedAsShort() {
         return format.format(fechaNacimiento);
     }
@@ -97,6 +101,12 @@ public class Guionista {
 
     public void setFormat(SimpleDateFormat format) {
         this.format = format;
+    }
+
+    @Override
+    public String toString() {
+        return "Guionista [direccion=" + direccion + ", email=" + email + ", fechaNacimiento=" + fechaNacimiento
+                + ", format=" + format + ", id=" + id + ", nombre=" + nombre + "]";
     }
 
 }

@@ -114,8 +114,8 @@ public class Guion {
 
     @Override
     public String toString() {
-        return "Guion [actores=" + actores + ", genero=" + genero + ", guionista=" + guionista.getNombre() + ", id="
-                + id + ", ideaCentral=" + ideaCentral + ", nombre=" + nombre + ", produccion=" + produccion + "]";
+        return "Guion [actores=" + actores + ", genero=" + genero + ", guionista=" + guionista + ", id=" + id
+                + ", ideaCentral=" + ideaCentral + ", nombre=" + nombre + ", produccion=" + produccion + "]";
     }
 
 }

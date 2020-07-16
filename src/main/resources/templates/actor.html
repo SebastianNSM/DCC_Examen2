@@ -18,6 +18,13 @@
                             <input type="submit" value="Filtrar">
                         </form>
                     </li>
+                    <li>
+                        Filtrar por rango de edad (Menor o igual a edad):
+                        <form th:action="@{/actor/find-by-edad}">
+                            <input type="number" th:name="edadMax">
+                            <input type="submit" value="Filtrar">
+                        </form>
+                    </li>
                 </ul>
             </h2>
             <br>

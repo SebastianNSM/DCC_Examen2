@@ -3,6 +3,7 @@ package com.ssoto.examen2.web;
 import java.text.ParseException;
 
 import com.ssoto.examen2.domain.Actor;
+import com.ssoto.examen2.domain.Guion;
 import com.ssoto.examen2.service.ActorService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,12 @@ public class ActorController {
     @GetMapping("actor/find-by-nombre")
     public String getByNombre(@RequestParam(value = "nombre") String nombre, Model model) {
         model.addAttribute("actores", actorService.findByNombre(nombre));
+        return "actor";
+    }
+
+    @GetMapping("actor/find-by-edad")
+    public String getByNombre(@RequestParam(value = "edadMax") int edadMax, Model model) {
+        model.addAttribute("actores", actorService.findByEdadMenorIgual(edadMax));
         return "actor";
     }
 

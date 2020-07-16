@@ -6,7 +6,7 @@
         <title>Registrar Guion</title>
     </head>
     <body>
-        <form action="#" method="post" th:action="@{/guion/reg}" th:object="${guion}">
+        <form action="#" method="post" th:action="@{/guion/reg}">
             <ol>
                 <li>
                     <span>NOMBRE</span>
@@ -27,7 +27,7 @@
                 </li>
                 <li>
                     <span>Guionista</span>
-                    <select th:field="${guion.idGuionista}" >
+                    <select th:object="${guionista}" th:field="${guionista.id}">
                         <option value="">Seleccione una opcion</option>
                         <option th:each="entry : ${guionistas}" th:value="${entry.id}" th:text="${entry.nombre}"></option>
                     </select>

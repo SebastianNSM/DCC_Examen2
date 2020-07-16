@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Produccion Guion</title>
+    </head>
+    <body>
+        <form action="#" method="post" th:action="@{/guion/produccion}">
+            <input type="hidden" th:name="gId" th:value="${guionId}">
+            <ol>
+                <li>
+                    <span>ID Guion: </span><span th:text="${guionId}">Id</span>
+                </li>
+                <li>
+                    <span>ACTOR 1</span>
+                    <select th:name="a1">
+                        <option value="">Seleccione una opcion</option>
+                        <option th:each="entry : ${actores}" th:value="${entry.id}" th:text="${entry.nombre}"></option>
+                    </select>
+                </li>
+                <li>
+                    <span>ACTOR 2</span>
+                    <select th:name="a2">
+                        <option value="">Seleccione una opcion</option>
+                        <option th:each="entry : ${actores}" th:value="${entry.id}" th:text="${entry.nombre}"></option>
+                    </select>
+                </li>
+            </ol>
+            <p>
+            <input type="submit" value="Submit"/>
+            <input type="reset" value="Reset"/>
+            </p>
+        </form>
+    </body>
+</html>

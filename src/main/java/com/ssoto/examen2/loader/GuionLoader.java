@@ -1,6 +1,7 @@
 package com.ssoto.examen2.loader;
 
 import java.text.ParseException;
+import java.util.List;
 
 import com.ssoto.examen2.domain.Guion;
 import com.ssoto.examen2.domain.Guionista;
@@ -33,8 +34,9 @@ class GuionLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         regGuiones();
-        // addActors(1, 1, 2);
-        // showGuionInfo((long) 1);
+        agregarProduccion((long) 5);
+        agregarProduccion((long) 2);
+        agregarProduccion((long) 1);
     }
 
     private void addActors(int idGuion, int idActor1, int idActor2) {
@@ -53,16 +55,20 @@ class GuionLoader implements CommandLineRunner {
     }
 
     private void regGuiones() throws ParseException {
-        Guionista g8 = new Guionista("Guionista8", "Direccion8", "email8@ejemplo.com", "03/17/2007");
-        guionistaService.save(g8);
-        guionService.save(new Guion("Guion1", "drama", "ic", g8));
+        List<Guionista> lst = guionistaService.findAll();
+        guionService.save(new Guion("Guion1", "drama", "ic", lst.get(0)));
+        guionService.save(new Guion("Guion2", "drama", "ic", lst.get(0)));
+        guionService.save(new Guion("Guion3", "drama", "ic", lst.get(2)));
+        guionService.save(new Guion("Guion4", "drama", "ic", lst.get(3)));
+        guionService.save(new Guion("Guion5", "drama", "ic", lst.get(1)));
+        guionService.save(new Guion("Guion6", "drama", "ic", lst.get(5)));
         logger.info("GUION REGISTRADO");
     }
 
     private void agregarProduccion(Long idGuion) {
-        Guion g = guionService.findById(idGuion);
-        g.toggleProduccion();
-        guionService.save(g);
+        Guion guion = guionService.findById(idGuion);
+        guion.setProduccion(true);
+        guionService.save(guion);
     }
 
     private void showGuionProduccion() {

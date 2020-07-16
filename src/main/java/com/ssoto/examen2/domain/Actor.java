@@ -53,7 +53,7 @@ public class Actor {
     private int edad;
 
     public String getCreatedAsShort() {
-        return format.format(fechaNacimiento);
+        return format.format(this.fechaNacimiento);
     }
 
     public Actor(String nombre, String genero, int estatura, String colorOjos, String colorPelo,

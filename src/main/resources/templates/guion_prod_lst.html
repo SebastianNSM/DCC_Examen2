@@ -39,9 +39,9 @@
                         <p>
                         <span>Idea Central: </span><span th:text="${entry.ideaCentral}">IDEA_CENTRAL</span>
                         </p>
-                        <form th:action="@{'/guion/set-produccion/'+${entry.id}}" method="post">
+                        <form th:action="@{'/guion/produccion/'+${entry.id}}">
                             <span>Produccion: </span><span th:text="${entry.produccion}">PRODUCCION</span>
-                            <input type="submit" value="Cambiar Estado">
+                            <input type="submit" value="Agregar actores">
                         </form>
                     </li>
                 </div>
