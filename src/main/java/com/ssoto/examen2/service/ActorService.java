@@ -18,4 +18,6 @@ public interface ActorService {
     public List<Actor> findByNombre(String nombre);
 
     public List<Actor> findByEdadMenorIgual(int edad);
+
+    public List<Actor> findByGeneroContainingIgnoreCase(String genero);
 }

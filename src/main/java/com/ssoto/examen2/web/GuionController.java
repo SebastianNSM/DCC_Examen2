@@ -60,7 +60,8 @@ public class GuionController {
     @GetMapping("guion/produccion/{id}")
     public String getAsociarActoresForm(@PathVariable(name = "id") Long id, Model model) {
         model.addAttribute("guionId", id);
-        model.addAttribute("actores", actorService.findAll());
+        model.addAttribute("hombres", actorService.findByGeneroContainingIgnoreCase("hombre"));
+        model.addAttribute("mujeres", actorService.findByGeneroContainingIgnoreCase("mujer"));
         return "prod_guion";
     }
 
@@ -73,7 +74,6 @@ public class GuionController {
         Actor actor2 = actorService.findById(a2);
         guion.getActores().add(actor1);
         guion.getActores().add(actor2);
-        guion.toggleProduccion();
         guionService.save(guion);
         return "redirect:/guion";
     }

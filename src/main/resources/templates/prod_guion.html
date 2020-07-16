@@ -13,17 +13,17 @@
                     <span>ID Guion: </span><span th:text="${guionId}">Id</span>
                 </li>
                 <li>
-                    <span>ACTOR 1</span>
+                    <span>ACTOR (Hombre)</span>
                     <select th:name="a1">
                         <option value="">Seleccione una opcion</option>
-                        <option th:each="entry : ${actores}" th:value="${entry.id}" th:text="${entry.nombre}"></option>
+                        <option th:each="entry : ${hombres}" th:value="${entry.id}" th:text="${entry.nombre}"></option>
                     </select>
                 </li>
                 <li>
-                    <span>ACTOR 2</span>
+                    <span>ACTOR (Mujer)</span>
                     <select th:name="a2">
                         <option value="">Seleccione una opcion</option>
-                        <option th:each="entry : ${actores}" th:value="${entry.id}" th:text="${entry.nombre}"></option>
+                        <option th:each="entry : ${mujeres}" th:value="${entry.id}" th:text="${entry.nombre}"></option>
                     </select>
                 </li>
             </ol>

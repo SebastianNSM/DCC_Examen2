@@ -13,4 +13,6 @@ public interface ActorRepository extends JpaRepository<Actor, Long> {
     List<Actor> findByNombreContainingIgnoreCase(String nombre);
 
     List<Actor> findByEdadLessThanEqual(int maxAge);
+
+    List<Actor> findByGeneroContainingIgnoreCase(String genero);
 }

@@ -46,4 +46,9 @@ public class ActorServiceImpl implements ActorService {
         return lst.stream().filter(a -> a.getEdad() <= edad).collect(Collectors.toList());
     }
 
+    @Override
+    public List<Actor> findByGeneroContainingIgnoreCase(String genero) {
+        return actorRepository.findByGeneroContainingIgnoreCase(genero);
+    }
+
 }
